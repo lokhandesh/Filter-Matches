@@ -28,37 +28,32 @@ class MatchesViewModelTest {
     @Mock
     lateinit var matchesViewModel: MatchesViewModel
 
-    @Mock
-    lateinit var mainActivity: MainActivity
 
-    @Mock
-    private lateinit var mockContext: Context
 
     @Before
     fun setUp() {
 
         MockitoAnnotations.initMocks(this)
-        MockitoAnnotations.initMocks(mainActivity)
         this.matchesViewModel = MatchesViewModel(application)
-        this.mainActivity = MainActivity()
+        this.application = Application()
 
     }
 
     @Test
     fun getMatchesList() {
-        var matchList = matchesViewModel.getAllMatches(mainActivity)
+        var matchList = matchesViewModel.getAllMatches()
         assertNotNull(matchList)
     }
 
     @Test
     fun retriveMatchesList() {
-        var matchList = matchesViewModel.retriveMatchesList(mainActivity)
+        var matchList = matchesViewModel.retriveMatchesList()
         assertNotNull(matchList)
     }
 
     @Test
     fun loadJSONFromAssets() {
-        var matchList = matchesViewModel.loadJSONFromAssets(mainActivity)
+        var matchList = matchesViewModel.loadJSONFromAssets()
         assertNotNull(matchList)
     }
 

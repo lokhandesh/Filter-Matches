@@ -26,21 +26,22 @@ class MatchesViewModel(application: Application) : AndroidViewModel(application)
 
 
     var matchesList = MutableLiveData<List<Matches>>()
+    var applicationn = application
 
-    fun getAllMatches(mainActivity: Context): LiveData<List<Matches>> {
+    fun getAllMatches(): LiveData<List<Matches>> {
 
-        return loadJSONFromAssets(mainActivity)
+        return loadJSONFromAssets()
     }
 
-    fun retriveMatchesList(context: Context) {
-        getAllMatches(context)
+    fun retriveMatchesList() {
+        getAllMatches()
     }
 
-    fun loadJSONFromAssets(mainActivity: Context): MutableLiveData<List<Matches>> {
+    fun loadJSONFromAssets(): MutableLiveData<List<Matches>> {
 
         var json: String? = null
         try {
-            val inputStream = mainActivity.assets.open("matches.json")
+            val inputStream = applicationn.assets.open("matches.json")
             val size = inputStream.available()
             val buffer = ByteArray(size)
             inputStream.read(buffer)

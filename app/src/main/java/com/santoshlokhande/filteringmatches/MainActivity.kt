@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
 
         initUi()
 
-        matchesViewModel.getAllMatches(this).observe(this,
+        matchesViewModel.getAllMatches().observe(this,
             Observer<List<Matches>> { t ->
                 adapter.setBooks(t!!,0)
                 this.matchesList = t
@@ -63,7 +63,7 @@ class MainActivity : AppCompatActivity() {
         recyclerView.setHasFixedSize(true)
         recyclerView.adapter = adapter
 
-        matchesViewModel.retriveMatchesList(this);
+        matchesViewModel.retriveMatchesList();
 
     }
 

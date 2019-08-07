@@ -6,9 +6,9 @@
 
     <data>
 
-        <!--<variable
-                name="album"
-                type="com.santoshlokhande.filteringmatches.data.Matcheses"/>-->
+        <variable
+                name="matches"
+                type="com.santoshlokhande.filteringmatches.data.Matches"/>
     </data>
 
 
@@ -27,20 +27,26 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
+
+            <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="45dp"
+                       android:layout_height="45dp"
+                       app:layout_constraintStart_toStartOf="parent"
+                       app:layout_constraintStart_toEndOf="parent"
+                       card_view:layout_constraintTop_toTopOf="parent"/>
+
+
             <TextView
                     android:id="@+id/text_view_title"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="20dp"
-                    android:paddingBottom="20dp"
-                    android:text="@{album.title}"
+                    android:text=""
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     android:textColor="#000000"
                     android:maxLines="2"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintStart_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/imageView"
                     app:layout_constraintEnd_toEndOf="parent"
                     card_view:layout_constraintTop_toTopOf="parent"/>
 

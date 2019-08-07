@@ -1,4 +1,16 @@
 <resources>
     <string name="app_name">Filtering-Matches</string>
     <string name="action_settings">Settings</string>
+
+
+    <string name="all_matches">All Matches</string>
+    <string name="favourite_yes">Favorite-Yes</string>
+    <string name="favourite_no">Favorite-No</string>
+    <string name="age_40">Age- Upto 40</string>
+    <string name="age_greater_40">Age- Greater Than 40</string>
+    <string name="religion_christian">Religion-Christian</string>
+    <string name="religiona_atheist">Religion-Atheist</string>
+
+
+
 </resources>

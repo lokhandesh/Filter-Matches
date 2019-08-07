@@ -1,8 +1,6 @@
 package com.santoshlokhande.filteringmatches
 
-import android.graphics.Color
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.Menu
 import android.view.MenuItem
@@ -19,12 +17,22 @@ import com.santoshlokhande.filteringmatches.viewmodel.MatchesViewModel
 
 import kotlinx.android.synthetic.main.activity_main.*
 
+/**
+ * Created by Santosh Lokhande on 05/8/2019
+ *
+ * This is Activity where use can see Matches List
+ *
+ * Here we used recycler view and MatchesAdapter.
+ *
+ */
+
 class MainActivity : AppCompatActivity() {
 
     lateinit var progressBar: ProgressBar
     lateinit var parentCoordinate: ConstraintLayout
     private lateinit var matchesViewModel: MatchesViewModel
     private val adapter = MatchesAdapter(this)
+    private var matchesList: List<Matches> = ArrayList()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,9 +45,10 @@ class MainActivity : AppCompatActivity() {
 
         initUi()
 
-        matchesViewModel.getAllMatchesTitle().observe(this,
+        matchesViewModel.getAllMatches(this).observe(this,
             Observer<List<Matches>> { t ->
-                adapter.setBooks(t!!,matchesViewModel)
+                adapter.setBooks(t!!,0)
+                this.matchesList = t
                 progressBar.visibility=View.INVISIBLE
             })
 
@@ -54,17 +63,11 @@ class MainActivity : AppCompatActivity() {
         recyclerView.setHasFixedSize(true)
         recyclerView.adapter = adapter
 
-            matchesViewModel.retriveMatchesList();
+        matchesViewModel.retriveMatchesList(this);
 
-
-    }
-
-    fun retriveSelectedAlbum(id: Int) {
-        matchesViewModel.retriveSelectedAlbum(id)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.menu_main, menu)
         return true
     }
@@ -72,9 +75,20 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
         return when (item.itemId) {
-            R.id.action_settings -> true
+            R.id.all_matches ->  {sortList(0) ; return true }
+            R.id.action_favorite_yes -> {sortList(1) ; return true }
+            R.id.action_favorite_no -> {sortList(2) ; return true }
+            R.id.age_40 -> {sortList(3) ; return true }
+            R.id.age_greaterthan_40 -> {sortList(4) ; return true }
+            R.id.religion_christian -> {sortList(5) ; return true }
+            R.id.religiona_atheist -> {sortList(6) ; return true }
             else -> super.onOptionsItemSelected(item)
         }
 
     }
+
+    fun sortList(pos:Int){
+        adapter.setBooks(matchesList,pos)
+    }
+
 }

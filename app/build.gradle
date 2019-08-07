@@ -27,6 +27,7 @@ android {
 
     testOptions {
         unitTests.returnDefaultValues = true
+        unitTests.includeAndroidResources = true
     }
 
     dataBinding {
@@ -47,6 +48,13 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
+    //testing
+    implementation 'androidx.arch.core:core-testing:2.0.1'
+    testImplementation 'org.mockito:mockito-inline:2.13.0'
+    androidTestImplementation "org.mockito:mockito-android:3.0.0"
+    androidTestImplementation 'androidx.test:rules:1.2.0'
+
+
     //recyclerview and cardview
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
     implementation 'androidx.cardview:cardview:1.0.0'
@@ -61,6 +69,17 @@ dependencies {
 
     // Lifecycle components
     implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
+
+    //gson
+    implementation 'com.google.code.gson:gson:2.8.5'
+
+    //Picasso
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
+    //glide
+    implementation 'com.github.bumptech.glide:glide:4.9.0'
+    kapt 'com.github.bumptech.glide:compiler:4.9.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
 
 
 }

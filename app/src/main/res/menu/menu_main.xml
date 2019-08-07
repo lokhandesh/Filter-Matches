@@ -2,8 +2,41 @@
       xmlns:app="http://schemas.android.com/apk/res-auto"
       xmlns:tools="http://schemas.android.com/tools"
       tools:context="com.santoshlokhande.filteringmatches.MainActivity">
-    <item android:id="@+id/action_settings"
-          android:title="@string/action_settings"
+
+
+    <item android:id="@+id/all_matches"
+          android:title="@string/all_matches"
           android:orderInCategory="100"
           app:showAsAction="never"/>
+
+    <item android:id="@+id/action_favorite_yes"
+          android:title="@string/favourite_yes"
+          android:orderInCategory="100"
+          app:showAsAction="never"/>
+
+    <item android:id="@+id/action_favorite_no"
+          android:title="@string/favourite_no"
+          android:orderInCategory="100"
+          app:showAsAction="never"/>
+
+    <item android:id="@+id/age_40"
+          android:title="@string/age_40"
+          android:orderInCategory="100"
+          app:showAsAction="never"/>
+
+    <item android:id="@+id/age_greaterthan_40"
+          android:title="@string/age_greater_40"
+          android:orderInCategory="100"
+          app:showAsAction="never"/>
+
+    <item android:id="@+id/religion_christian"
+          android:title="@string/religion_christian"
+          android:orderInCategory="100"
+          app:showAsAction="never"/>
+
+    <item android:id="@+id/religiona_atheist"
+          android:title="@string/religiona_atheist"
+          android:orderInCategory="100"
+          app:showAsAction="never"/>
+
 </menu>

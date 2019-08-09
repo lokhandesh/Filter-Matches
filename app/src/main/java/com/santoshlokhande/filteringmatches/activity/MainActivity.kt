@@ -1,4 +1,4 @@
-package com.santoshlokhande.filteringmatches
+package com.santoshlokhande.filteringmatches.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.santoshlokhande.filteringmatches.R
 import com.santoshlokhande.filteringmatches.adapter.MatchesAdapter
 import com.santoshlokhande.filteringmatches.data.Matches
 import com.santoshlokhande.filteringmatches.viewmodel.MatchesViewModel

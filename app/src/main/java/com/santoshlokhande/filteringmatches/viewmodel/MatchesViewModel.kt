@@ -1,12 +1,10 @@
 package com.santoshlokhande.filteringmatches.viewmodel
 
 import android.app.Application
-import android.content.Context
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.gson.Gson
-import com.santoshlokhande.filteringmatches.MainActivity
 import com.santoshlokhande.filteringmatches.data.Matches
 import com.santoshlokhande.filteringmatches.data.MatchesResponse
 import java.io.IOException
@@ -26,7 +24,7 @@ class MatchesViewModel(application: Application) : AndroidViewModel(application)
 
 
     var matchesList = MutableLiveData<List<Matches>>()
-    var applicationn = application
+    var applicationObj = application
 
     fun getAllMatches(): LiveData<List<Matches>> {
 
@@ -41,7 +39,7 @@ class MatchesViewModel(application: Application) : AndroidViewModel(application)
 
         var json: String? = null
         try {
-            val inputStream = applicationn.assets.open("matches.json")
+            val inputStream = applicationObj.assets.open("matches.json")
             val size = inputStream.available()
             val buffer = ByteArray(size)
             inputStream.read(buffer)

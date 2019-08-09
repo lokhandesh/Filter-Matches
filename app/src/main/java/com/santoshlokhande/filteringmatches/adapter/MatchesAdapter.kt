@@ -1,22 +1,13 @@
 package com.santoshlokhande.filteringmatches.adapter
 
 import android.content.Context
-import android.graphics.drawable.BitmapDrawable
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import com.bumptech.glide.Glide
-import com.santoshlokhande.filteringmatches.MainActivity
 import com.santoshlokhande.filteringmatches.R
 import com.santoshlokhande.filteringmatches.data.Matches
-import com.santoshlokhande.filteringmatches.viewmodel.MatchesViewModel
-import com.squareup.picasso.Callback
-import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.album_item1.view.*
-import java.lang.Exception
 import kotlin.collections.ArrayList
 
 
@@ -37,7 +28,7 @@ class MatchesAdapter(val applicationContext: Context) : RecyclerView.Adapter<Mat
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MatchesHolder {
         val itemView = LayoutInflater.from(parent.context)
-            .inflate(R.layout.album_item1, parent, false)
+            .inflate(R.layout.album_item, parent, false)
 
         return MatchesHolder(itemView)
     }

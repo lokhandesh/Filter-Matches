@@ -47,15 +47,19 @@ class MainActivity : AppCompatActivity() {
         initUi()
 
         matchesViewModel.getAllMatches().observe(this,
-            Observer<List<Matches>> { t ->
-                adapter.setBooks(t!!,0)
-                this.matchesList = t
-                progressBar.visibility=View.INVISIBLE
+            Observer<List<Matches>> {
+                it.let {
+                    adapter.setBooks(it!!, 0)
+                    this.matchesList = it
+                    progressBar.visibility = View.INVISIBLE
+
+                }
+
             })
 
     }
 
-    fun initUi(){
+    fun initUi() {
 
         val recyclerView = findViewById<RecyclerView>(R.id.recycler_view)
         progressBar = findViewById(R.id.progressBar)
@@ -76,20 +80,34 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
         return when (item.itemId) {
-            R.id.all_matches ->  {sortList(0) ; return true }
-            R.id.action_favorite_yes -> {sortList(1) ; return true }
-            R.id.action_favorite_no -> {sortList(2) ; return true }
-            R.id.age_40 -> {sortList(3) ; return true }
-            R.id.age_greaterthan_40 -> {sortList(4) ; return true }
-            R.id.religion_christian -> {sortList(5) ; return true }
-            R.id.religiona_atheist -> {sortList(6) ; return true }
+            R.id.all_matches -> {
+                sortList(0); return true
+            }
+            R.id.action_favorite_yes -> {
+                sortList(1); return true
+            }
+            R.id.action_favorite_no -> {
+                sortList(2); return true
+            }
+            R.id.age_40 -> {
+                sortList(3); return true
+            }
+            R.id.age_greaterthan_40 -> {
+                sortList(4); return true
+            }
+            R.id.religion_christian -> {
+                sortList(5); return true
+            }
+            R.id.religiona_atheist -> {
+                sortList(6); return true
+            }
             else -> super.onOptionsItemSelected(item)
         }
 
     }
 
-    fun sortList(pos:Int){
-        adapter.setBooks(matchesList,pos)
+    fun sortList(pos: Int) {
+        adapter.setBooks(matchesList, pos)
     }
 
 }

@@ -4,10 +4,11 @@ import android.content.Context
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import com.santoshlokhande.filteringmatches.R
 import com.santoshlokhande.filteringmatches.data.Matches
+import com.santoshlokhande.filteringmatches.databinding.AlbumItemBinding
+import kotlinx.android.synthetic.main.album_item.view.*
 import kotlin.collections.ArrayList
 
 
@@ -27,33 +28,21 @@ class MatchesAdapter(val applicationContext: Context) : RecyclerView.Adapter<Mat
     private var matchesList: List<Matches> = ArrayList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MatchesHolder {
-        val itemView = LayoutInflater.from(parent.context)
-            .inflate(R.layout.album_item, parent, false)
 
-        return MatchesHolder(itemView)
+        val inflator = LayoutInflater.from(parent.context)
+        val binding = AlbumItemBinding.inflate(inflator, parent, false)
+
+        return MatchesHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: MatchesHolder, position: Int) {
+    override fun onBindViewHolder(holder: MatchesHolder, position: Int) = holder.bind(matchesList[position])
 
-        val currentMatches = matchesList[position]
-        holder.textViewTitle.text = currentMatches.display_name
-        holder.jobTitle.text = currentMatches.job_title
-        holder.age.text = "Age :- "+currentMatches.age.toString()
-        holder.height.text = "Height :- "+currentMatches.height_in_cm
-        holder.isFavorite.text = "Favourite:- "+currentMatches.favourite.toString()
-        holder.relegion.text = currentMatches.religion
-        holder.score.text = currentMatches.compatibility_score.toString()
-
-    }
-
-    override fun getItemCount(): Int {
-        return matchesList.size
-    }
+    override fun getItemCount(): Int = matchesList.size
 
     fun setBooks(
-        list: List<Matches>,position: Int
+        list: List<Matches>, position: Int
     ) {
-        when (position){
+        when (position) {
             0 -> this.matchesList = list.sortedBy { list -> list.display_name }
             1 -> this.matchesList = list.filter { list -> list.favourite == true }
             2 -> this.matchesList = list.filter { list -> list.favourite == false }
@@ -66,18 +55,26 @@ class MatchesAdapter(val applicationContext: Context) : RecyclerView.Adapter<Mat
         notifyDataSetChanged()
     }
 
-    class MatchesHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class MatchesHolder(val binding : AlbumItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        var textViewTitle: TextView = itemView.findViewById(R.id.text_view_title)
-      //  var imageView: ImageView = itemView.findViewById(R.id.imageView)
-        var jobTitle: TextView = itemView.findViewById(R.id.jobTitle)
-        var age: TextView = itemView.findViewById(R.id.age)
-        var height: TextView = itemView.findViewById(R.id.height)
-        var score: TextView = itemView.findViewById(R.id.score)
-        var isFavorite: TextView = itemView.findViewById(R.id.isFavorite)
-        var relegion: TextView = itemView.findViewById(R.id.relegion)
+        fun bind(item: Matches) {
+
+            binding.matches = item
+            binding.executePendingBindings()
 
 
+            /*with(itemView) {
+
+                text_view_title.text = item.display_name
+                jobTitle.text = item.job_title
+                age.text = item.age.toString()
+                heightt.text = item.height_in_cm.toString()
+                score.text = item.compatibility_score.toString()
+                isFavorite.text = item.favourite.toString()
+                relegion.text = item.religion
+
+            }*/
+        }
 
     }
 
